@@ -1,27 +1,14 @@
-import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { Dropbox } from 'dropbox';
+import FolderList from '../src/components/FolderList';
 
 const token =
-  'sl.A6znWBeiSThYrN3_sHS4yVJX2wGIHJZlxjq2hhH8AiKQGKxGwXV70vhwJueCDCculOhmbaQmNTH48UIxG3Hke7x19Gpn9onT-tL2SVKBNtH8SvOcQZSU-YZNxOvToCq8DKa4uQu34KFk';
+  'PU3kh0_0Eh4AAAAAAAAAAcx-5U-vejMkiCwvn56MyCXAE4BWHn9EmFXJRm6VUQ-V';
 
 const Home: NextPage = () => {
-  const [listOfQueries, setListOfQueries] = useState<any>();
-  useEffect(() => {
-    gettingDropboxInfo();
-  }, []);
-
-  const gettingDropboxInfo = async () => {
-    const dropBox = new Dropbox({ accessToken: token });
-
-    const res = await dropBox.filesListFolder({ path: '/Otoli Document' });
-    setListOfQueries(res.result.entries);
-    console.log('dropBoxInfo', res);
-  };
-
   return (
     <div className={styles.container}>
       <Head>
@@ -31,22 +18,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        {listOfQueries &&
-          listOfQueries.map((entry: any) => <p key={entry.id}>{entry.name}</p>)}
+        <FolderList token={token} path={{ path: '' }} />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 };
