@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.rs-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rs-picker-cascader-menu-items div {
+  width: 100% !important;
+}

@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@rsuite/icons": "^1.0.2",
     "axios": "^0.23.0",
     "dropbox": "^10.13.0",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "rsuite": "^5.0.3"
   },
   "devDependencies": {
     "@types/react": "17.0.30",
