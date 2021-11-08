@@ -29,8 +29,6 @@ const RightSection = ({
         {enteries ? (
           enteries.length > 0 ? (
             enteries.map((item: any) => {
-              console.log(searchResult);
-
               let entry: any = item;
               if ('metadata' in item) {
                 entry = item.metadata.metadata;

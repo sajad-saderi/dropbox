@@ -92,7 +92,6 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
           path: currentPath.path,
         },
       });
-      console.log("dsf",res.result.matches);
 
       let entries: any = res.result.matches;
       setListOfEntries(entries);

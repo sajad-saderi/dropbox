@@ -33,7 +33,6 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
   }, [router]);
 
   const uploadingFile = async () => {
-    console.log(value);
     if (value) {
       if (value.length !== 1) return alert('یک فایل باید آپلود شود.');
     } else if (!update?.name && !name) {

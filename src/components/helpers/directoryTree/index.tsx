@@ -17,5 +17,4 @@ export const directoryTree = (entry: any[], parentId: any) => {
     index,
     isFolder: item['.tag'] === 'folder' ? true : false,
   }));
-  console.log('rwsr', test);
 };
