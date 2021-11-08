@@ -8,7 +8,7 @@ interface DirectoryTree {
 }
 let test = [];
 
-export const directoryTree = (entry, parentId) => {
+export const directoryTree = (entry: any[], parentId: any) => {
   test = entry.map((item, index) => ({
     id: item.id,
     isOpen: false,
