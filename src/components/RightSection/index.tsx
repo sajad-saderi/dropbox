@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Tag, List, Loader, InputGroup, Input } from 'rsuite';
+import Link from 'next/link';
 import FolderFillIcon from '@rsuite/icons/FolderFill';
 import TextImageIcon from '@rsuite/icons/TextImage';
+import ChangeListIcon from '@rsuite/icons/ChangeList';
 import Search from '@rsuite/icons/Search';
 import { useRouter } from 'next/router';
 import { directoryTree } from '../helpers/directoryTree';
@@ -26,8 +28,15 @@ const RightSection = ({
       <List className="folderStructureTree">
         {enteries ? (
           enteries.length > 0 ? (
-            enteries.map((entry: any) =>
-              entry['.tag'] === 'folder' ? (
+            enteries.map((item: any) => {
+              console.log(searchResult);
+
+              let entry: any = item;
+              if ('metadata' in item) {
+                entry = item.metadata.metadata;
+              }
+
+              return entry['.tag'] === 'folder' ? (
                 <List.Item
                   key={entry.id}
                   onClick={() => router.push(`${entry.path_lower}`)}
@@ -41,6 +50,12 @@ const RightSection = ({
                       }}
                     />
                     {entry.name}
+                    {item.metadata && (
+                      <p className="FolderPath">
+                        مسیر:{' '}
+                        <Link href={entry.path_lower}>{entry.path_lower}</Link>
+                      </p>
+                    )}
                   </div>
                 </List.Item>
               ) : (
@@ -54,6 +69,12 @@ const RightSection = ({
                       }}
                     />
                     {entry.name}
+                    {item.metadata && (
+                      <p className="FolderPath">
+                        مسیر:{' '}
+                        <Link href={entry.path_lower}>{entry.path_lower}</Link>
+                      </p>
+                    )}
                   </div>
                   <Tag
                     onClick={() => {
@@ -65,11 +86,15 @@ const RightSection = ({
                     className="updateBadge"
                     color="orange"
                   >
-                    به روز رسانی
+                    <ChangeListIcon
+                      style={{
+                        fontSize: '1.3em',
+                      }}
+                    />
                   </Tag>
                 </List.Item>
-              ),
-            )
+              );
+            })
           ) : (
             <p>پوشه خالی</p>
           )

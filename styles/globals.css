@@ -100,6 +100,9 @@ form {
 .rs-modal-footer {
   text-align: left !important;
 }
+.FolderPath {
+  font-size: 11px;
+}
 
 .updateBadge {
   cursor: pointer;

@@ -73,14 +73,12 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
   // };
 
   const searchQueryhandller = async (e: any) => {
+    setListOfEntries(null);
     if (!e) {
       setSearchResult(false);
       gettingDropboxInfo(currentPath);
     }
     setSearchResult(true);
-    console.log(currentPath);
-
-    setListOfEntries(null);
     const dropBox = new Dropbox({ accessToken: token });
     try {
       const res = await dropBox.filesSearchV2({
@@ -90,11 +88,11 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
         query: e,
         options: {
           filename_only: true,
-          max_results: 10,
+          max_results:50,
           path: currentPath.path,
         },
       });
-      console.log(res.result);
+      console.log("dsf",res.result.matches);
 
       let entries: any = res.result.matches;
       setListOfEntries(entries);
@@ -125,7 +123,7 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
       </section>
       <RightSection
         enteries={listOfEntries}
-        serachResult={searchResult}
+        searchResult={searchResult}
         UpdatinHandler={serUpate}
         searchQueryhandller={searchQueryhandller}
       />
