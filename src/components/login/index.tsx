@@ -8,7 +8,6 @@ const Longin = () => {
 
   const getLogin = async () => {
     const result = await handler();
-    console.log("r",result);
   };
 
   return <p>login</p>;

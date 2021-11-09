@@ -24,8 +24,6 @@ const RightSection = ({
   searchResult,
 }: any) => {
   const router = useRouter();
-  // console.log(directoryTree());
-  console.log(router);
 
   return (
     <section className="rightSection">
