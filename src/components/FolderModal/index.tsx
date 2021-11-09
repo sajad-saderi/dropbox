@@ -33,7 +33,17 @@ const FolderModal = ({ open, title, model, name, setClose }: Data) => {
   }, [router]);
 
   const createFolder = async () => {
-    const { path } = currentPath;
+    let path: any = null;
+    let firstletter = 'u';
+    if (changeFoldername.current) {
+      path = '/otoli document/users';
+    } else if (changeFolderModel.current) {
+      firstletter = 'c';
+      path = '/otoli document/cars';
+    } else {
+      firstletter = 'b';
+      path = '/otoli document/booking';
+    }
 
     if (!changeFoldeId.current.value) return alert('id یوشه باید حتما پر شود');
     if (name && !changeFoldername.current.value)
@@ -43,9 +53,7 @@ const FolderModal = ({ open, title, model, name, setClose }: Data) => {
     try {
       const dropBox = new Dropbox({ accessToken: token });
       const result = await dropBox.filesCreateFolderV2({
-        path: `${path}/${
-          changeFoldername.current ? 'u' : changeFolderModel.current ? 'c' : 'b'
-        }${changeFoldeId.current.value}${
+        path: `${path}/${firstletter}${changeFoldeId.current.value}${
           changeFoldername.current
             ? '-' + changeFoldername.current.value
             : changeFolderModel.current
@@ -54,8 +62,17 @@ const FolderModal = ({ open, title, model, name, setClose }: Data) => {
         }`,
         autorename: false,
       });
+
       handleClose();
-      router.reload();
+      router.push(
+        `${path}/${firstletter}${changeFoldeId.current.value}${
+          changeFoldername.current
+            ? '-' + changeFoldername.current.value
+            : changeFolderModel.current
+            ? '-' + changeFolderModel.current.value
+            : ''
+        }`,
+      );
     } catch (error) {
       console.log(error);
     }
