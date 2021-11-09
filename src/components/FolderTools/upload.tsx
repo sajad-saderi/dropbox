@@ -32,6 +32,7 @@ const data = [
   { value: 'گاز', label: 'گاز' },
   { value: 'پاسپورت', label: 'پاسپورت' },
   { value: 'کارت اقامت', label: 'کارت اقامت ' },
+  { value: 'بیمه اجاره', label: 'بیمه اجاره' },
 ];
 
 const FileUpload = ({ update }: FolderTools) => {

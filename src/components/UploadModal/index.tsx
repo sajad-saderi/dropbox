@@ -42,7 +42,7 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
       return alert('وارد کردن نام برای سند اجباری است.');
     }
     
-    if (name === 'بیمه نامه شخص ثالث' && !insuranceId.current.value) {
+    if (name === 'بیمه اجاره' && !insuranceId.current.value) {
       return alert('شماره بیمه را وارد کنید.');
     }
     let fileName = name || update?.name.split('.').shift();
@@ -60,7 +60,7 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
       const result = await dropBox.filesUpload({
         contents: value[0].blobFile,
         path: `${path}/${update?.name ? '' : pathId}${fileName}${
-          name === 'بیمه نامه شخص ثالث' ? '_'+insuranceId.current.value : ''
+          name === 'بیمه اجاره' ? '_'+insuranceId.current.value : ''
         }.${fileExtension}`,
         autorename: false,
         mode: mode,
@@ -101,7 +101,7 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
           </div>
         </Uploader>
         <br />
-        {name === 'بیمه نامه شخص ثالث' && (
+        {name === 'بیمه اجاره' && (
           <InputGroup style={{ width: 300, float: 'right' }}>
             <Input ref={insuranceId} />
             <InputGroup.Addon>شماره بیمه</InputGroup.Addon>

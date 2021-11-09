@@ -37,7 +37,13 @@ const RightSection = ({
       {router.asPath !== '/' && (
         <IconButton
           size="xs"
-          onClick={() => router.back()}
+          onClick={() => {
+            const path: string =
+              router.asPath.split('/').slice(0, -1).join('/') !== ''
+                ? router.asPath.split('/').slice(0, -1).join('/')
+                : '/';
+            router.push(path);
+          }}
           icon={<MoveUpIcon />}
         >
           بازگشت
