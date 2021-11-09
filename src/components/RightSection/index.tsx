@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Tag, List, Loader, InputGroup, Input } from 'rsuite';
+import {
+  Tag,
+  List,
+  Loader,
+  InputGroup,
+  Input,
+  Button,
+  IconButton,
+} from 'rsuite';
 import Link from 'next/link';
 import FolderFillIcon from '@rsuite/icons/FolderFill';
 import TextImageIcon from '@rsuite/icons/TextImage';
@@ -7,6 +15,7 @@ import ChangeListIcon from '@rsuite/icons/ChangeList';
 import Search from '@rsuite/icons/Search';
 import { useRouter } from 'next/router';
 import { directoryTree } from '../helpers/directoryTree';
+import MoveUpIcon from '@rsuite/icons/MoveUp';
 
 const RightSection = ({
   enteries,
@@ -25,6 +34,13 @@ const RightSection = ({
           <Search />
         </InputGroup.Button>
       </InputGroup>
+      <br />
+      <IconButton
+        onClick={() => router.back()}
+        icon={<MoveUpIcon />}
+      >
+        بازگشت
+      </IconButton>
       <List className="folderStructureTree">
         {enteries ? (
           enteries.length > 0 ? (

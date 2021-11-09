@@ -37,7 +37,7 @@ const Home: NextPage = () => {
         open={open}
         title={title}
         model={model}
-        name={model}
+        name={name}
         setClose={() => setOpen(!open)}
       />
       <main className={styles.main}>

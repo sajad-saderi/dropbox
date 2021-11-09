@@ -107,3 +107,7 @@ form {
 .updateBadge {
   cursor: pointer;
 }
+
+.folderStructureTree .rs-list-item {
+  cursor: pointer;
+}

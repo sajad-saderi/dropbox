@@ -5,12 +5,6 @@ import FileUpload from './upload';
 import { Button, Input, Form, Cascader, Dropdown, InputGroup } from 'rsuite';
 import AddOutlineIcon from '@rsuite/icons/AddOutline';
 
-const data = [
-  { value: 'user', label: 'کاربر' },
-  { value: 'car', label: 'ماشین' },
-  { value: 'order', label: 'رزرو' },
-];
-
 const FolderTools = ({
   currentPath,
   token,

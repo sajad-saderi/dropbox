@@ -7,7 +7,6 @@ const token =
   'PU3kh0_0Eh4AAAAAAAAAAcx-5U-vejMkiCwvn56MyCXAE4BWHn9EmFXJRm6VUQ-V';
 
 const FolderModal = ({ open, title, model, name, setClose }: Data) => {
-
   const [openModal, setOpenModel] = useState(false);
   const [currentPath, setCurrentpath] = useState<any>(null);
 
@@ -41,21 +40,12 @@ const FolderModal = ({ open, title, model, name, setClose }: Data) => {
       return alert('نام یوشه باید حتما پر شود');
     if (model && !changeFolderModel.current.value)
       return alert('مدل و برند یوشه باید حتما پر شود');
-    console.log(
-      'path',
-      `${path}/${changeFoldeId.current.value}${
-        changeFoldername.current
-          ? '-' + changeFoldername.current.value
-          : changeFolderModel.current
-          ? '-' + changeFolderModel.current.value
-          : ''
-      }`,
-    );
-
     try {
       const dropBox = new Dropbox({ accessToken: token });
       const result = await dropBox.filesCreateFolderV2({
-        path: `${path}/${changeFoldeId.current.value}${
+        path: `${path}/${
+          changeFoldername.current ? 'u' : changeFolderModel.current ? 'c' : 'b'
+        }${changeFoldeId.current.value}${
           changeFoldername.current
             ? '-' + changeFoldername.current.value
             : changeFolderModel.current
