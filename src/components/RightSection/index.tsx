@@ -25,6 +25,7 @@ const RightSection = ({
 }: any) => {
   const router = useRouter();
   // console.log(directoryTree());
+  console.log(router);
 
   return (
     <section className="rightSection">
@@ -35,12 +36,15 @@ const RightSection = ({
         </InputGroup.Button>
       </InputGroup>
       <br />
-      <IconButton
-        onClick={() => router.back()}
-        icon={<MoveUpIcon />}
-      >
-        بازگشت
-      </IconButton>
+      {router.asPath !== '/' && (
+        <IconButton
+          size="xs"
+          onClick={() => router.back()}
+          icon={<MoveUpIcon />}
+        >
+          بازگشت
+        </IconButton>
+      )}
       <List className="folderStructureTree">
         {enteries ? (
           enteries.length > 0 ? (
