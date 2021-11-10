@@ -49,6 +49,7 @@ a {
 
 .BreadcrumbContainer nav {
   font-size: 14px;
+  text-align: right;
 }
 
 .folderStructureTree {
@@ -110,4 +111,8 @@ form {
 
 .folderStructureTree .rs-list-item {
   cursor: pointer;
+}
+
+.rs-picker-cascader-menu-column{
+  height: 300px !important;
 }
