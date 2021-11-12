@@ -47,11 +47,11 @@ const Signin = () => {
                 </Form.Group>
 
                 <Form.Group controlId="password-7">
-                    <Form.ControlLabel>رمز عبور</Form.ControlLabel>
-                    <Input ref={passwordValue} name="password" type="password" style={{ width: 160 }} />
+                    <Form.ControlLabel className={styles.passwordLabel}>رمز عبور</Form.ControlLabel>
+                    <Input className={styles.passwordInput} ref={passwordValue} name="password" type="password" style={{ width: 160 }} />
                 </Form.Group>
 
-                <Button onClick={hanleInformation}>ورود</Button>
+                <Button appearance="primary" onClick={hanleInformation}>ورود</Button>
             </Form>
         </article >
     )

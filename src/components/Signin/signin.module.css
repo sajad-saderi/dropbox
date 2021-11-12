@@ -4,8 +4,16 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  direction: rtl;
 }
 
+.passwordLabel {
+  margin-left: 12px;
+}
+
+.passwordInput {
+  direction: ltr;
+}
 .userNameDropdown {
   width: 100% !important;
   text-align: right;
