@@ -4,7 +4,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import { Dropbox } from 'dropbox';
-import Longin from '../../src/components/login';
 import axios from 'axios';
 import FolderList from '../../src/components/FolderList';
 import { Button, ButtonToolbar, Input, InputGroup, Modal } from 'rsuite';
