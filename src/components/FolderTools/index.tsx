@@ -7,7 +7,6 @@ import AddOutlineIcon from '@rsuite/icons/AddOutline';
 
 const FolderTools = ({
   currentPath,
-  token,
   update,
   handleOpen,
 }: FolderTools) => {
@@ -58,7 +57,6 @@ const FolderTools = ({
 };
 interface FolderTools {
   currentPath: { path: string };
-  token: string;
   handleOpen: any;
   update?: { rev: string; name: string };
 }

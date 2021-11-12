@@ -4,9 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, InputGroup, Modal, Uploader } from 'rsuite';
 import { FileType } from 'rsuite/esm/Uploader/Uploader';
 
-const token =
-  'PU3kh0_0Eh4AAAAAAAAAAcx-5U-vejMkiCwvn56MyCXAE4BWHn9EmFXJRm6VUQ-V';
-
 const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
   const [value, setValue] = useState<any>([]);
   const [openModal, setOpenModel] = useState(false);
@@ -41,7 +38,7 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
     } else if (!update?.name && !name) {
       return alert('وارد کردن نام برای سند اجباری است.');
     }
-    
+
     if (name === 'بیمه اجاره' && !insuranceId.current.value) {
       return alert('شماره بیمه را وارد کنید.');
     }
@@ -56,12 +53,11 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
       mode = { update: update.rev, '.tag': 'update' };
     }
     try {
-      const dropBox = new Dropbox({ accessToken: token });
+      const dropBox = new Dropbox({ accessToken: process.env.TOKEN });
       const result = await dropBox.filesUpload({
         contents: value[0].blobFile,
-        path: `${path}/${update?.name ? '' : pathId}${fileName}${
-          name === 'بیمه اجاره' ? '_'+insuranceId.current.value : ''
-        }.${fileExtension}`,
+        path: `${path}/${update?.name ? '' : pathId}${fileName}${name === 'بیمه اجاره' ? '_' + insuranceId.current.value : ''
+          }.${fileExtension}`,
         autorename: false,
         mode: mode,
       });

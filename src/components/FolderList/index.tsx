@@ -12,7 +12,7 @@ type Path = { path: string; router?: string };
 
 // const limit = 20;
 // let activePage = 1;
-const FolderList = ({ token, path, handleOpen }: IFolderList) => {
+const FolderList = ({ path, handleOpen }: IFolderList) => {
   const [searchResult, setSearchResult] = useState<any>(false);
   const [listOfEntries, setListOfEntries] = useState<any>([]);
   // const [listOfOriginalEntries, setListOfOriginalEntries] = useState<any>([]);
@@ -38,7 +38,7 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
     // activePage = 1;
     // setListOfOriginalEntries(null);
     setListOfEntries(null);
-    const dropBox = new Dropbox({ accessToken: token });
+    const dropBox = new Dropbox({ accessToken: process.env.TOKEN });
     try {
       const res = await dropBox.filesListFolder(data);
       let entries: any = res.result.entries;
@@ -79,7 +79,7 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
       gettingDropboxInfo(currentPath);
     }
     setSearchResult(true);
-    const dropBox = new Dropbox({ accessToken: token });
+    const dropBox = new Dropbox({ accessToken: process.env.TOKEN });
     try {
       const res = await dropBox.filesSearchV2({
         match_field_options: {
@@ -88,7 +88,7 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
         query: e,
         options: {
           filename_only: true,
-          max_results:50,
+          max_results: 50,
           path: currentPath.path,
         },
       });
@@ -115,7 +115,6 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
         <BreadCrumb breadcrumb={breadcrumb} />
         <FolderTools
           currentPath={currentPath}
-          token={token}
           update={update}
           handleOpen={handleOpen}
         />
@@ -139,7 +138,6 @@ const FolderList = ({ token, path, handleOpen }: IFolderList) => {
 };
 
 interface IFolderList {
-  token: string;
   handleOpen: any;
   path?: { path: string };
 }

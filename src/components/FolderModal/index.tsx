@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Input, InputGroup, Modal } from 'rsuite';
 
-const token =
-  'PU3kh0_0Eh4AAAAAAAAAAcx-5U-vejMkiCwvn56MyCXAE4BWHn9EmFXJRm6VUQ-V';
 
 const FolderModal = ({ open, title, model, name, setClose }: Data) => {
   const [openModal, setOpenModel] = useState(false);
@@ -51,24 +49,22 @@ const FolderModal = ({ open, title, model, name, setClose }: Data) => {
     if (model && !changeFolderModel.current.value)
       return alert('مدل و برند یوشه باید حتما پر شود');
     try {
-      const dropBox = new Dropbox({ accessToken: token });
+      const dropBox = new Dropbox({ accessToken: process.env.TOKEN });
       const result = await dropBox.filesCreateFolderV2({
-        path: `${path}/${firstletter}${changeFoldeId.current.value}${
-          changeFoldername.current
-            ? '-' + changeFoldername.current.value
-            : changeFolderModel.current
+        path: `${path}/${firstletter}${changeFoldeId.current.value}${changeFoldername.current
+          ? '-' + changeFoldername.current.value
+          : changeFolderModel.current
             ? '-' + changeFolderModel.current.value
             : ''
-        }`,
+          }`,
         autorename: false,
       });
 
       handleClose();
       router.push(
-        `${path}/${firstletter}${changeFoldeId.current.value}${
-          changeFoldername.current
-            ? '-' + changeFoldername.current.value
-            : changeFolderModel.current
+        `${path}/${firstletter}${changeFoldeId.current.value}${changeFoldername.current
+          ? '-' + changeFoldername.current.value
+          : changeFolderModel.current
             ? '-' + changeFolderModel.current.value
             : ''
         }`,
