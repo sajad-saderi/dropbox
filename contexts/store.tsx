@@ -9,7 +9,7 @@ export const StoreProvider = ({ children }: any) => {
     const [auth, setAuth] = useState(false)
     return (<AppStore.Provider value={{
         isAuth: auth,
-        setAuth: (v) => { console.log('in context', v); setAuth(v) }
+        setAuth: (v) => setAuth(v)
     }}>{children} </AppStore.Provider>)
 }
 

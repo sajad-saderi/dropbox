@@ -6,9 +6,6 @@ export default function loginHandler(req: NextApiRequest, res: NextApiResponse) 
   const { username, password } = req.body
 
   if (req.method === "POST") {
-    // @ts-ignore
-    console.log(username, password, data[username].password);
-
     try {
       // @ts-ignore
       if (data[username].password === password)

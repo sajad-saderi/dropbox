@@ -23,7 +23,6 @@ const Signin = () => {
             if (res.data.success) {
                 sessionStorage['isAuth'] = true
                 store.setAuth(true)
-                console.log(store);
                 router.push('/')
             }
         }
