@@ -1,15 +1,16 @@
 import { Dropbox } from 'dropbox';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Form, Input, InputGroup, Modal, Uploader } from 'rsuite';
 import { FileType } from 'rsuite/esm/Uploader/Uploader';
+import store from '../../../contexts/store';
 
 const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
   const [value, setValue] = useState<any>([]);
   const [openModal, setOpenModel] = useState(false);
   const [currentPath, setCurrentpath] = useState<any>(null);
   const [isUpdating, setIsUpdating] = useState(false);
-
+  const { setGetList } = useContext(store)
   const router = useRouter();
   const insuranceId = useRef<any>(null);
 
@@ -61,7 +62,8 @@ const UploadModal = ({ open, isUpdate, name, setClose, update }: Data) => {
         autorename: false,
         mode: mode,
       });
-      router.reload();
+      setGetList(true)
+      handleClose()
     } catch (error) {
       alert(error);
     }

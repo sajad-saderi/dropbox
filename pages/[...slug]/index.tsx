@@ -28,8 +28,10 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (!store.isAuth) {
-      router.push('signin')
+    if (!store.isAuth && !sessionStorage['isAuth']) {
+      router.push('/signin')
+    } else if (sessionStorage['isAuth'] === 'true') {
+      store.setAuth(true)
     }
   }, [store.isAuth, router])
 

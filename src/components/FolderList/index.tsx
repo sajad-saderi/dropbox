@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Dropbox } from 'dropbox';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FolderTools from '../FolderTools';
 import { Breadcrumb, Button } from 'rsuite';
 import RightSection from '../RightSection';
 import { directoryTree } from '../helpers/directoryTree';
 import { BreadCrumb } from '../Breadcrumb';
+import store from '../../../contexts/store';
 
 type Path = { path: string; router?: string };
 
@@ -21,6 +22,7 @@ const FolderList = ({ path, handleOpen }: IFolderList) => {
   const [currentPath, setCurrentpath] = useState<any>(null);
   // const [isLoader, setIsLoader] = useState<any>(false);
   const [update, serUpate] = useState<any>({ rev: null, name: null });
+  const { getList, setGetList } = useContext(store)
   const router = useRouter();
   useEffect(() => {
     // getToken();
@@ -108,6 +110,16 @@ const FolderList = ({ path, handleOpen }: IFolderList) => {
       // setIsLoader(false);
     }
   };
+
+  useEffect(() => {
+    if (getList) {
+      let path = { path: router.asPath === '/' ? '' : decodeURI(router.asPath) };
+      setBreadcrumb(router.asPath.split('/'));
+      setCurrentpath(path);
+      gettingDropboxInfo(path);
+      setGetList(false)
+    }
+  }, [getList, router.asPath, setGetList])
 
   return (
     <article className="mainContainer">
