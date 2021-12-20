@@ -43,6 +43,7 @@ const Signin = () => {
                         <Dropdown.Item eventKey='nahid'>ناهید</Dropdown.Item>
                         <Dropdown.Item eventKey='sara'>سارا</Dropdown.Item>
                         <Dropdown.Item eventKey='talayeh'>طلایه</Dropdown.Item>
+                        <Dropdown.Item eventKey='nastaran'>نسترن</Dropdown.Item>
                     </Dropdown>
                 </Form.Group>
 
