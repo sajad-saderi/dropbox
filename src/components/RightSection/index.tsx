@@ -71,7 +71,7 @@ const RightSection = ({
                         fontSize: '1em',
                       }}
                     />
-                    {entry.name}
+                    <p dir='rtl'>{entry.name}</p>
                     {item.metadata && (
                       <p className="FolderPath">
                         مسیر:{' '}
@@ -90,7 +90,7 @@ const RightSection = ({
                         fontSize: '1em',
                       }}
                     />
-                    {entry.name}
+                    <p dir='rtl'>{entry.name}</p>
                     {item.metadata && (
                       <p className="FolderPath">
                         مسیر:{' '}

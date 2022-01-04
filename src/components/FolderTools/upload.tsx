@@ -41,7 +41,7 @@ const data = [
   { value: 'وکالت اجاره', label: 'وکالت اجاره' },
 ];
 
-const FileUpload = ({ update }: FolderTools) => {
+const FileUpload = ({ update, resetUpdate }: FolderTools) => {
   const [dropDownValue, setDropDownValue] = useState<any>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const [open, setOpen] = useState(false);
@@ -66,6 +66,7 @@ const FileUpload = ({ update }: FolderTools) => {
         setClose={() => {
           setOpen(false);
         }}
+        resetUpdate={resetUpdate}
       />
       {/* <Uploader draggable>
         <div
@@ -144,6 +145,7 @@ const FileUpload = ({ update }: FolderTools) => {
 };
 interface FolderTools {
   update?: { rev: string; name: string };
+	resetUpdate: () => void;
 }
 
 export default FileUpload;

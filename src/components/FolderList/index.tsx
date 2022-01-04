@@ -128,6 +128,7 @@ const FolderList = ({ path, handleOpen }: IFolderList) => {
         <FolderTools
           currentPath={currentPath}
           update={update}
+          resetUpdate={()=>serUpate({ rev: null, name: null })}
           handleOpen={handleOpen}
         />
       </section>
