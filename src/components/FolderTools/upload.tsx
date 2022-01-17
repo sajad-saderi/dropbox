@@ -39,6 +39,7 @@ const data = [
   { value: 'کارت اقامت', label: 'کارت اقامت ' },
   { value: 'بیمه اجاره', label: 'بیمه اجاره' },
   { value: 'وکالت اجاره', label: 'وکالت اجاره' },
+  { value: 'روزنامه رسمی', label: 'روزنامه رسمی' },
 ];
 
 const FileUpload = ({ update, resetUpdate }: FolderTools) => {
