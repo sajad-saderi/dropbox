@@ -23,6 +23,7 @@ const data = [
   { value: 'گواهی شغلی', label: 'گواهی شغلی ' },
   { value: 'پروانه کسب', label: 'پروانه کسب ' },
   { value: 'مجوز', label: 'مجوز' },
+  { value: 'قرارداد تمدید', label: 'قرارداد تمدید' },
   { value: 'سند ملک جدید و قدیم', label: 'سند ملک جدید و قدیم ' },
   { value: 'اجاره نامه پشت', label: 'اجاره نامه پشت ' },
   { value: 'اجاره نامه رو', label: 'اجاره نامه رو' },
@@ -111,12 +112,12 @@ const FileUpload = ({ update, resetUpdate }: FolderTools) => {
           </Button>
         </Form.Group>
       ) : ( */}
-      <Form.Group controlId="add file">
+      <Form.Group controlId='add file'>
         <Cascader
-          className="uploadButton"
-          placement="bottomEnd"
-          appearance="subtle"
-          placeholder="آپلود فایل"
+          className='uploadButton'
+          placement='bottomEnd'
+          appearance='subtle'
+          placeholder='آپلود فایل'
           style={{ width: 120 }}
           data={data}
           onChange={(e) => {
@@ -146,7 +147,7 @@ const FileUpload = ({ update, resetUpdate }: FolderTools) => {
 };
 interface FolderTools {
   update?: { rev: string; name: string };
-	resetUpdate: () => void;
+  resetUpdate: () => void;
 }
 
 export default FileUpload;
