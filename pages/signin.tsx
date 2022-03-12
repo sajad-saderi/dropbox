@@ -45,6 +45,7 @@ const Signin = () => {
                         <Dropdown.Item eventKey='talayeh'>طلایه</Dropdown.Item>
                         <Dropdown.Item eventKey='nastaran'>نسترن</Dropdown.Item>
                         <Dropdown.Item eventKey='mohadeseh'>محدثه</Dropdown.Item>
+                        <Dropdown.Item eventKey='َayda'>آیدا</Dropdown.Item>
                     </Dropdown>
                 </Form.Group>
 
